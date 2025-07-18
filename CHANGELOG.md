@@ -12,3 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub action to manage labels for issue (#1)
 - Add project skeleton (#3)
 - Add extension method (#5)
+
+### Fixed
+
+- Fixed bug where Bogus was generating invalid Docker image tags (#11)
