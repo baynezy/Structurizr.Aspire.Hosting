@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Authors>Simon Baynes</Authors>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/baynezy/Aspire.Hosting.Structurizr</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Description>Add Structurizr Lite to your Aspire AppHost</Description>
+        <Copyright>© Simon Baynes 2025</Copyright>
+        <PackageTags>Aspire;Structurizr</PackageTags>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Aspire.Hosting.AppHost" Version="9.3.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../../README.md" Pack="true" PackagePath="/" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,41 @@
+name: Deploy Feature Branch
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - develop
+    paths:
+      - 'src/**'
+      - 'test/**'
+      - '**.cake'
+      - '.github/workflows/branch-feature.yml'
+      - '.github/workflows/step-*.yml'
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  pull-requests: write
+  checks: write
+
+jobs:
+  get-version:
+    if: startsWith(github.head_ref, 'feature/') || startsWith(github.head_ref, 'copilot/') || github.head_ref == 'master'
+    uses: ./.github/workflows/step-version.yml
+
+  build:
+    needs: [get-version]
+    uses: ./.github/workflows/step-build.yml
+    secrets: inherit
+    with:
+      version: ${{ needs.get-version.outputs.version }}
+      checkout-ref: ${{ github.head_ref }}
+    
+  mutation-testing:
+    needs: [get-version]
+    uses: ./.github/workflows/step-mutation-testing.yml
+    secrets: inherit
+    with:
+      comparison: ${{ github.base_ref }}
