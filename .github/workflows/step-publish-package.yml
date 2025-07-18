@@ -27,7 +27,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.package-name }}
-          path: ./src/Html2Markdown/bin/Release
+          path: ./src/Aspire.Hosting.Structurizr/bin/Release
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4
         with:
