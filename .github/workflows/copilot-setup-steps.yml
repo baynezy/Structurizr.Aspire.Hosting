@@ -1,0 +1,26 @@
+﻿name: "Copilot Setup Steps"
+
+on: workflow_dispatch
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  # The job MUST be called `copilot-setup-steps` or it will not be picked up by Copilot.
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+
+    # Set the permissions to the lowest permissions possible needed for your steps.
+    # Copilot will be given its own token for its operations.
+    permissions:
+      contents: read
+      
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4.3.1
+        with:
+          dotnet-version: |
+            8.0.x
+            9.0.x

@@ -1,0 +1,66 @@
+name: Deploy HotFix Branch
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - master
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  pull-requests: write
+  checks: write
+  contents: write
+
+jobs:
+  get-version:
+    if: startsWith(github.head_ref, 'hotfix/')
+    uses: ./.github/workflows/step-version.yml
+  
+  build:
+    needs: [get-version]
+    uses: ./.github/workflows/step-build.yml
+    secrets: inherit
+    with:
+      version: ${{ needs.get-version.outputs.version }}
+      checkout-ref: ${{ github.head_ref }}
+    
+  update-metadata:
+    if: github.event.action == 'opened'
+    needs: [get-version]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Increment Version
+        id: increment_version
+        run: |
+          echo "patch_version=$(($(cat semver.json | jq -r '.patch')+1))" > $GITHUB_OUTPUT
+      - name: Store New Version
+        uses: Afterlife-Guide/SemVer.Action@1.1.1.16
+        with:
+          path: semver.json
+          major-version: ${{ needs.get-version.outputs.major }}
+          minor-version: ${{ needs.get-version.outputs.minor }}
+          patch-version: ${{ steps.increment_version.outputs.patch_version }}
+          build-version: ${{ github.run_number }}
+      - name: Update changelog
+        uses: baynezy/ChangeLogger.Action@1.1.1.13
+        with:
+          tag: ${{ needs.get-version.outputs.major }}.${{ needs.get-version.outputs.minor }}.${{ steps.increment_version.outputs.patch_version }}.${{ github.run_number }}
+          repo-path: '/'
+          log-path: './CHANGELOG.md'
+          
+      - name: Commit Changes
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "no-reply@after-life.co"
+          git add CHANGELOG.md semver.json
+          git commit --message "Bump Version to ${{ needs.get-version.outputs.major }}.${{ needs.get-version.outputs.minor }}.${{ steps.increment_version.outputs.patch_version }}.${{ github.run_number }}"
+
+      - name: Push Version
+        run: git push origin ${{ github.head_ref }}
