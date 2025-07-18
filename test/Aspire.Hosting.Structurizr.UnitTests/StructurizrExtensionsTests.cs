@@ -5,7 +5,7 @@ namespace Aspire.Hosting.Structurizr.UnitTests;
 public class StructurizrExtensionsTests
 {
     private const int DefaultPort = 8080;
-    private readonly Faker _faker = new Faker();
+    private readonly Faker _faker = new();
 
     [Fact]
     public void AddStructurizr_WhenSettingName_ThenNameShouldBeSet()
@@ -61,8 +61,7 @@ public class StructurizrExtensionsTests
         // arrange
         const string name = "Structurizr";
         var builder = DistributedApplication.CreateBuilder();
-        var imageTag = _faker.Random.Word()
-            .Replace(" ", "");
+        var imageTag = GenerateImageTag();
 
         // act
         var resource = builder.AddStructurizr(name, config => config.ImageTag = imageTag)
@@ -82,6 +81,17 @@ public class StructurizrExtensionsTests
             .Be("structurizr/lite");
         image.Tag.Should()
             .Be(imageTag);
+    }
+
+    private string GenerateImageTag()
+    {
+        var imageTag = _faker.Random.Word();
+
+        // remove and characters that are not alphanumeric or fullstops from imageTag
+        imageTag = new string(imageTag.Where(c => char.IsLetterOrDigit(c) || c == '.')
+            .ToArray());
+
+        return imageTag;
     }
 
     [Fact]
