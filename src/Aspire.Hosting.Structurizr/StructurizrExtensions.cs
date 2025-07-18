@@ -1,4 +1,5 @@
-﻿namespace Aspire.Hosting.Structurizr;
+﻿// ReSharper disable once CheckNamespace
+namespace Aspire.Hosting;
 
 public static class StructurizrExtensions
 {

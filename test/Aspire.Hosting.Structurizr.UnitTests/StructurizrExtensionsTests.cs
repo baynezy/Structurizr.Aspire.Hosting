@@ -188,7 +188,8 @@ public class StructurizrExtensionsTests
 
         bindMount.Should()
             .NotBeNull();
-        bindMount.Source.Should()
+        bindMount.Source!.Replace("/", "\\")
+            .Should()
             .EndWith(bindMountPath.Replace("/", "\\"));
         bindMount.Target.Should()
             .Be("/usr/local/structurizr");

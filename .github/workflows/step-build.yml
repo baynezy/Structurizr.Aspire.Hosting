@@ -1,0 +1,58 @@
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: 'The version number to use for the build'
+        required: true
+        type: string
+      checkout-ref:
+        description: 'The commit SHA to checkout'
+        required: true
+        type: string
+  
+jobs:
+  build-libraries:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Log Branch
+      run: |
+        echo "Branch: ${{ inputs.checkout-ref }}"
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.checkout-ref }}
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v4.3.1
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore
+      uses: cake-build/cake-action@v3
+      with:
+        target: Restore
+    - name: Build
+      uses: cake-build/cake-action@v3
+      with:
+        target: Build
+        arguments: |
+          versionNumber: ${{inputs.version}}
+    - name: Run tests
+      uses: cake-build/cake-action@v3
+      with:
+        target: Test
+    - name: Publish Unit Test Results
+      if: ${{ github.actor != 'dependabot[bot]' }}
+      uses: EnricoMi/publish-unit-test-result-action/linux@v2
+      with:
+        files: "**/TestResults/*.xml"
+    - name: Build NuGet Package
+      uses: cake-build/cake-action@v3
+      with:
+        target: Pack
+        arguments: |
+          versionNumber: ${{inputs.version}}
+    - name: Upload Package
+      if: ${{ github.actor != 'dependabot[bot]' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: Aspire.Hosting.Structurizr
+        path: ./src/Aspire.Hosting.Structurizr/bin/Release/*.nupkg
