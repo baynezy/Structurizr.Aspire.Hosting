@@ -22,4 +22,4 @@ jobs:
       deploy-env: ${{ inputs.deploy-env }}
       deploy-branch: ${{ inputs.deploy-branch }}
       version: ${{ inputs.version }}
-      package-name: Aspire.Hosting.Structurizr
+      package-name: Structurizr.Aspire.Hosting

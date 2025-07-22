@@ -1,8 +1,8 @@
 {
   "stryker-config":
   {
-    "solution": "Aspire.Hosting.Structurizr.sln",
-    "project": "Aspire.Hosting.Structurizr.csproj",
+    "solution": "Structurizr.Aspire.Hosting.sln",
+    "project": "Structurizr.Aspire.Hosting.csproj",
     "thresholds": {
       "high": 95,
       "low": 85,

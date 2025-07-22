@@ -1,4 +1,4 @@
-# Aspire.Hosting.Structurizr
+# Structurizr.Aspire.Hosting
 
 This is an Aspire extenstion that enables hosting of [Structurizr](https://structurizr.com/) workspaces in Aspire.
 

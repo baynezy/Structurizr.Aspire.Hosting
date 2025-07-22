@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Aspire.Hosting.Structurizr\Aspire.Hosting.Structurizr.csproj" />
+      <ProjectReference Include="..\..\src\Structurizr.Aspire.Hosting\Structurizr.Aspire.Hosting.csproj" />
     </ItemGroup>
 
 </Project>
