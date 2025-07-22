@@ -1,7 +1,7 @@
 var target = Argument("target", "Test");
 var configuration = Argument("configuration", "Release");
 var versionNumber = Argument("versionNumber", "0.1.0");
-var projectName = "Aspire.Hosting.Structurizr";
+var projectName = "Structurizr.Aspire.Hosting";
 var solutionFolder = "./";
 
 Task("Clean")

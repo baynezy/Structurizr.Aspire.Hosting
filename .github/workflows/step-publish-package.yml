@@ -27,11 +27,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ inputs.package-name }}
-          path: ./src/Aspire.Hosting.Structurizr/bin/Release
+          path: ./src/Structurizr.Aspire.Hosting/bin/Release
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
       - name: Push package to NuGet
         run: |
-          dotnet nuget push $(find ./src/Aspire.Hosting.Structurizr/bin/Release/*.nupkg) --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push $(find ./src/Structurizr.Aspire.Hosting/bin/Release/*.nupkg) --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json

@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A7ADBD4D-4DF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A497C521-BAA2-4949-A7EE-D813D806AE66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.Hosting.Structurizr", "src\Aspire.Hosting.Structurizr\Aspire.Hosting.Structurizr.csproj", "{1C8ECC3B-8938-48D4-9F28-A7694E06A4E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structurizr.Aspire.Hosting", "src\Structurizr.Aspire.Hosting\Structurizr.Aspire.Hosting.csproj", "{1C8ECC3B-8938-48D4-9F28-A7694E06A4E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aspire.Hosting.Structurizr.UnitTests", "test\Aspire.Hosting.Structurizr.UnitTests\Aspire.Hosting.Structurizr.UnitTests.csproj", "{A8CADD9E-165F-4285-AEAC-796270283BF9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structurizr.Aspire.Hosting.UnitTests", "test\Structurizr.Aspire.Hosting.UnitTests\Structurizr.Aspire.Hosting.UnitTests.csproj", "{A8CADD9E-165F-4285-AEAC-796270283BF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
