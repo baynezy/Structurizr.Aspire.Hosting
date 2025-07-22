@@ -1,6 +1,7 @@
-﻿using Aspire.Hosting.ApplicationModel;
+﻿using Aspire.Hosting;
+using Aspire.Hosting.ApplicationModel;
 
-namespace Aspire.Hosting.Structurizr.UnitTests;
+namespace Structurizr.Aspire.Hosting.UnitTests;
 
 public class StructurizrExtensionsTests
 {
