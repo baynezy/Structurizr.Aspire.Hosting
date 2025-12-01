@@ -52,7 +52,7 @@ jobs:
           versionNumber: ${{inputs.version}}
     - name: Upload Package
       if: ${{ github.actor != 'dependabot[bot]' }}
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: Structurizr.Aspire.Hosting
         path: ./src/Structurizr.Aspire.Hosting/bin/Release/*.nupkg
