@@ -14,3 +14,6 @@
 
 # SonarLint ignored files
 sonarlint.xml
+
+# copilot
+copilot.data.*
