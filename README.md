@@ -1,5 +1,7 @@
 # Structurizr.Aspire.Hosting
 
+[![NuGet version](https://img.shields.io/nuget/v/Structurizr.Aspire.Hosting.svg)](https://www.nuget.org/packages/Structurizr.Aspire.Hosting/)
+
 This is an Aspire extenstion that enables hosting of [Structurizr](https://structurizr.com/) workspaces in Aspire.
 
 ## Features
