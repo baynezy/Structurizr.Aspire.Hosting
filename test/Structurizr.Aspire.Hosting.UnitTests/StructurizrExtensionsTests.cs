@@ -178,6 +178,51 @@ public class StructurizrExtensionsTests
     }
 
     [Fact]
+    public async Task AddStructurizr_WithDefaults_ThenViewDiagramsUrlShouldBeSetCorrectly()
+    {
+        // arrange
+        const string name = "Structurizr";
+        var builder = DistributedApplication.CreateBuilder();
+
+        // act
+        var resource = builder.AddStructurizr(name)
+            .Resource;
+
+        var firstUrlAnnotation = resource.Annotations
+            .OfType<ResourceUrlsCallbackAnnotation>()
+            .FirstOrDefault();
+
+        // assert
+        firstUrlAnnotation.Should()
+            .NotBeNull();
+
+        var annotations = new List<ResourceUrlAnnotation>();
+
+        // Create the required Execution Context (dummy for testing)
+        var options = new DistributedApplicationExecutionContextOptions(DistributedApplicationOperation.Run);
+        var executionContext = new DistributedApplicationExecutionContext(options);
+
+        var context = new ResourceUrlsCallbackContext(
+            executionContext,
+            resource,
+            annotations,
+            CancellationToken.None
+        );
+
+        await firstUrlAnnotation.Callback(context);
+
+        // 4. Assert
+        annotations.Should()
+            .HaveCount(1);
+        var annotation = annotations[0];
+
+        annotation.DisplayText.Should()
+            .Be("View Diagrams");
+        annotation.Url.Should()
+            .Be("http://localhost:8080");
+    }
+
+    [Fact]
     public void AddStructurizr_WithCustomBindMount_ThenBindMountShouldBeSet()
     {
         // arrange
@@ -225,6 +270,9 @@ public class StructurizrExtensionsTests
                            // resource names cannot start or end with a hyphen
                            && char.IsAsciiLetter(name[0])
                            // resource names cannot end with a hyphen
-                           && char.IsAsciiLetter(name[^1]));
+                           && char.IsAsciiLetter(name[^1])
+                           // resource names cannot have consecutive hyphens
+                           && !name.Contains("--")
+            );
     }
 }
