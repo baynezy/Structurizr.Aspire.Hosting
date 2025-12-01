@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Issue where FsCheck was creating invalid resource names (#56)
+
 ## [0.1.2.4] - 2025-08-20
 
 ## [0.1.1.3] - 2025-08-04
