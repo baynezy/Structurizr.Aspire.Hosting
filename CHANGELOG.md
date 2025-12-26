@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Updated workflow emails from `no-reply@after-life.co` to `baynezy@gmail.com` (#72)
+
 ### Added
 
 - NuGet version badge to README (#60)
