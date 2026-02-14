@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Create tag
         run: |
           git config --global user.name "GitHub Action Bot"
-          git config --global user.email "no-reply@after-life.co"
+          git config --global user.email "baynezy@gmail.com"
           git tag -a ${{ inputs.version }} -m "Version ${{ inputs.version }} created via GitHub Actions"
           git push origin ${{ inputs.version }}

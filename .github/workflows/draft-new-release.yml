@@ -26,12 +26,12 @@ jobs:
     name: "Draft a new release"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Create release branch
         run: git checkout -b release/${{ github.event.inputs.major_version }}.${{ github.event.inputs.minor_version }}.${{ github.event.inputs.patch_version }}.${{ github.run_number }}
         
       - name: Update Version Number
-        uses: Afterlife-Guide/SemVer.Action@1.2.1.19
+        uses: Afterlife-Guide/SemVer.Action@1.3.2.18
         with:
           path: semver.json
           major-version: ${{ github.event.inputs.major_version }}
@@ -40,7 +40,7 @@ jobs:
           build-version: ${{ github.run_number }}
 
       - name: Update changelog
-        uses: baynezy/ChangeLogger.Action@1.1.1.13
+        uses: baynezy/ChangeLogger.Action@1.2.1.7
         with:
           tag: ${{ github.event.inputs.major_version }}.${{ github.event.inputs.minor_version }}.${{ github.event.inputs.patch_version }}.${{ github.run_number }}
           repo-path: '/'
@@ -50,7 +50,7 @@ jobs:
         id: make-commit
         run: |
           git config --global user.name "GitHub Action Bot"
-          git config --global user.email "no-reply@after-life.co"
+          git config --global user.email "baynezy@gmail.com"
           git add CHANGELOG.md semver.json
           git commit --message "Prepare release ${{ github.event.inputs.major_version }}.${{ github.event.inputs.minor_version }}.${{ github.event.inputs.patch_version }}.${{ github.run_number }}"
 

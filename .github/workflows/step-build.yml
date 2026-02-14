@@ -18,11 +18,11 @@ jobs:
       run: |
         echo "Branch: ${{ inputs.checkout-ref }}"
     - name: Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@v6
       with:
         ref: ${{ inputs.checkout-ref }}
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v5
+      uses: actions/setup-dotnet@v5.1.0
       with:
         dotnet-version: 8.0.x
     - name: Restore
@@ -52,7 +52,7 @@ jobs:
           versionNumber: ${{inputs.version}}
     - name: Upload Package
       if: ${{ github.actor != 'dependabot[bot]' }}
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v6
       with:
         name: Structurizr.Aspire.Hosting
         path: ./src/Structurizr.Aspire.Hosting/bin/Release/*.nupkg

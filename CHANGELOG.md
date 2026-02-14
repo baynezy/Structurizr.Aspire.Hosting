@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4.6] - 2026-02-14
+
+### Changed
+
+- Updated workflow emails from `no-reply@after-life.co` to `baynezy@gmail.com` (#72)
+
+### Added
+
+- NuGet version badge to README (#60)
+
 ## [0.1.3.5] - 2025-12-01
 
 ### Fixed
@@ -31,7 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed bug where Bogus was generating invalid Docker image tags (#11)
 - Bug with pushing package to NuGet (#16)
 
-[unreleased]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.3.5...HEAD
+[unreleased]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.4.6...HEAD
+[0.1.4.6]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.3.5...0.1.4.6
 [0.1.3.5]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.2.4...0.1.3.5
 [0.1.2.4]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.1.3...0.1.2.4
 [0.1.1.3]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.0.2...0.1.1.3
