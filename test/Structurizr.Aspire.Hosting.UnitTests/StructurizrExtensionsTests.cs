@@ -1,5 +1,6 @@
 ﻿using Aspire.Hosting;
 using Aspire.Hosting.ApplicationModel;
+using FsCheck.Xunit;
 
 namespace Structurizr.Aspire.Hosting.UnitTests;
 
@@ -84,17 +85,6 @@ public class StructurizrExtensionsTests
             .Be(imageTag);
     }
 
-    private string GenerateImageTag()
-    {
-        var imageTag = _faker.Random.Word();
-
-        // remove and characters that are not alphanumeric or fullstops from imageTag
-        imageTag = new string(imageTag.Where(c => char.IsLetterOrDigit(c) || c == '.')
-            .ToArray());
-
-        return imageTag;
-    }
-
     [Fact]
     public void AddStructurizr_WithDefaults_ThenPortsShouldBeSet()
     {
@@ -125,29 +115,28 @@ public class StructurizrExtensionsTests
     [Fact]
     public void AddStructurizr_WithCustomPort_ThenPortShouldBeSet()
     {
-        // arrange
-        const string name = "Structurizr";
-        var builder = DistributedApplication.CreateBuilder();
-        var port = _faker.Random.Int(1024, 65535);
+        Prop.ForAll(Gen.Choose(1024, 65535)
+                .ToArbitrary(), port =>
+            {
+                // arrange
+                const string name = "Structurizr";
+                var builder = DistributedApplication.CreateBuilder();
 
-        // act
-        var resource = builder.AddStructurizr(name, config => config.Port = port)
-            .Resource;
+                // act
+                var resource = builder.AddStructurizr(name, config => config.Port = port)
+                    .Resource;
 
-        // assert
-        resource.Annotations.Any(x => x is EndpointAnnotation)
-            .Should()
-            .BeTrue();
-
-        var endpoint = resource.Annotations.OfType<EndpointAnnotation>()
-            .FirstOrDefault();
-
-        endpoint.Should()
-            .NotBeNull();
-        endpoint.Port.Should()
-            .Be(port);
-        endpoint.TargetPort.Should()
-            .Be(DefaultPort);
+                // assert
+                var endpoint = resource.Annotations.OfType<EndpointAnnotation>()
+                    .FirstOrDefault();
+                endpoint.Should()
+                    .NotBeNull();
+                endpoint.Port.Should()
+                    .Be(port);
+                endpoint.TargetPort.Should()
+                    .Be(DefaultPort);
+            })
+            .QuickCheckThrowOnFailure();
     }
 
     [Fact]
@@ -249,6 +238,17 @@ public class StructurizrExtensionsTests
             .EndWith(bindMountPath.Replace("/", "\\"));
         bindMount.Target.Should()
             .Be("/usr/local/structurizr");
+    }
+
+    private string GenerateImageTag()
+    {
+        var imageTag = _faker.Random.Word();
+
+        // remove and characters that are not alphanumeric or fullstops from imageTag
+        imageTag = new string(imageTag.Where(c => char.IsLetterOrDigit(c) || c == '.')
+            .ToArray());
+
+        return imageTag;
     }
 
     private static Arbitrary<string> ValidResourceNamesArbitrary()
