@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Upgraded the unit test project to xUnit v3 and updated Cake test execution for Microsoft Testing Platform reporting (#122)
+
 ## [0.1.5.7] - 2026-03-04
 
 ## [0.1.4.6] - 2026-02-14
