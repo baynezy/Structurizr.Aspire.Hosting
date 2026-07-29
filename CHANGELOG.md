@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0.8] - 2026-07-29
+
+### Added
+
+- Multi-targeting support for .NET 9 and .NET 10 in addition to .NET 8 (#121)
+
 ## [0.1.5.7] - 2026-03-04
 
 ## [0.1.4.6] - 2026-02-14
@@ -43,7 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed bug where Bogus was generating invalid Docker image tags (#11)
 - Bug with pushing package to NuGet (#16)
 
-[unreleased]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.5.7...HEAD
+[unreleased]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.2.0.8...HEAD
+[0.2.0.8]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.5.7...0.2.0.8
 [0.1.5.7]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.4.6...0.1.5.7
 [0.1.4.6]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.3.5...0.1.4.6
 [0.1.3.5]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.2.4...0.1.3.5
