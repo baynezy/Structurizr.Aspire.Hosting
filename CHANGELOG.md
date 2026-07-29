@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Multi-targeting support for .NET 9 and .NET 10 in addition to .NET 8 (#121)
+
 ## [0.1.5.7] - 2026-03-04
 
 ## [0.1.4.6] - 2026-02-14
