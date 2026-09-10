@@ -17,3 +17,10 @@ sonarlint.xml
 
 # copilot
 copilot.data.*
+
+# aws
+aws.xml
+awsToolkit.xml
+
+# Git
+git_toolbox_prj.xml

@@ -4,7 +4,7 @@ namespace Aspire.Hosting;
 public class StructurizrConfig
 {
     /// <summary>
-    /// The tag of the Structurizr Lite Docker image to use.
+    /// The tag of the Structurizr Docker image to use.
     /// </summary>
     public required string ImageTag { get; set; }
 
@@ -14,7 +14,7 @@ public class StructurizrConfig
     public required string WorkspaceFilesPath { get; set; }
 
     /// <summary>
-    /// The port on which the Structurizr Lite server will expose on the host machine.
+    /// The port on which the Structurizr server will expose on the host machine.
     /// </summary>
     public required int Port { get; set; }
 }

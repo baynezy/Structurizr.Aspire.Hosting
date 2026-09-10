@@ -6,7 +6,7 @@
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/baynezy/Structurizr.Aspire.Hosting</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Description>Add Structurizr Lite to your Aspire AppHost</Description>
+        <Description>Add Structurizr to your Aspire AppHost</Description>
         <Copyright>© Simon Baynes 2025</Copyright>
         <PackageTags>Aspire;Structurizr</PackageTags>
         <ImplicitUsings>enable</ImplicitUsings>

@@ -7,7 +7,7 @@ This is an Aspire extension that enables hosting of [Structurizr](https://struct
 ## Features
 
 * Hosting Structurizr workspaces in Aspire.
-* Use local workspace mounted in Structurizr Lite docker container in your dev environment.
+* Use local workspace mounted in the Structurizr docker container in your dev environment.
 
 ## Usage
 
@@ -24,7 +24,7 @@ await builder.Build()
     .RunAsync();
 ```
 
-### Customizing the Structurizr Lite Docker Container
+### Customizing the Structurizr Docker Container
 
 ```csharp
 using AppHost;
