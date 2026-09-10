@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0.9] - 2026-09-10
+
 ### Changed
 
 - Upgraded Docker image from `structurizr/lite` to `structurizr/structurizr` (now run with the `local` argument), following the retirement of Structurizr Lite (#147)
@@ -53,7 +55,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed bug where Bogus was generating invalid Docker image tags (#11)
 - Bug with pushing package to NuGet (#16)
 
-[unreleased]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.2.0.8...HEAD
+[unreleased]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/1.0.0.9...HEAD
+[1.0.0.9]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.2.0.8...1.0.0.9
 [0.2.0.8]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.5.7...0.2.0.8
 [0.1.5.7]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.4.6...0.1.5.7
 [0.1.4.6]: https://github.com/baynezy/Structurizr.Aspire.Hosting/compare/0.1.3.5...0.1.4.6
