@@ -52,7 +52,7 @@ public class StructurizrExtensionsTests
         image.Should()
             .NotBeNull();
         image.Image.Should()
-            .Be("structurizr/lite");
+            .Be("structurizr/structurizr");
         image.Tag.Should()
             .Be("latest");
     }
@@ -80,9 +80,39 @@ public class StructurizrExtensionsTests
         image.Should()
             .NotBeNull();
         image.Image.Should()
-            .Be("structurizr/lite");
+            .Be("structurizr/structurizr");
         image.Tag.Should()
             .Be(imageTag);
+    }
+
+    [Fact]
+    public async Task AddStructurizr_WithDefaults_ThenArgsShouldIncludeLocal()
+    {
+        // arrange
+        const string name = "Structurizr";
+        var builder = DistributedApplication.CreateBuilder();
+
+        // act
+        var resource = builder.AddStructurizr(name)
+            .Resource;
+
+        var argsAnnotation = resource.Annotations
+            .OfType<CommandLineArgsCallbackAnnotation>()
+            .FirstOrDefault();
+
+        // assert
+        argsAnnotation.Should()
+            .NotBeNull();
+
+        var args = new List<object>();
+        var context = new CommandLineArgsCallbackContext(args, CancellationToken.None);
+
+        await argsAnnotation.Callback(context);
+
+        args.Should()
+            .ContainSingle()
+            .Which.Should()
+            .Be("local");
     }
 
     [Fact]
