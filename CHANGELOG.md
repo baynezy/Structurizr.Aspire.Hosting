@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Upgraded Docker image from `structurizr/lite` to `structurizr/structurizr` (now run with the `local` argument), following the retirement of Structurizr Lite (#147)
+
 ## [0.2.0.8] - 2026-07-29
 
 ### Added

@@ -21,7 +21,8 @@ public static class StructurizrExtensions
         var resource = new StructurizrResource(name);
 
         return builder.AddResource(resource)
-            .WithImage($"structurizr/lite:{config.ImageTag}")
+            .WithImage($"structurizr/structurizr:{config.ImageTag}")
+            .WithArgs("local")
             .WithEndpoint(port: config.Port, targetPort: 8080)
             .WithUrl($"http://localhost:{config.Port.ToString()}", "View Diagrams")
             .WithBindMount(config.WorkspaceFilesPath, "/usr/local/structurizr");
