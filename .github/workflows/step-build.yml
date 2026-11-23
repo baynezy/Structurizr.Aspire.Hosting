@@ -26,17 +26,17 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore
-      uses: cake-build/cake-action@v3
+      uses: cake-build/cake-action@v4
       with:
         target: Restore
     - name: Build
-      uses: cake-build/cake-action@v3
+      uses: cake-build/cake-action@v4
       with:
         target: Build
         arguments: |
           versionNumber: ${{inputs.version}}
     - name: Run tests
-      uses: cake-build/cake-action@v3
+      uses: cake-build/cake-action@v4
       with:
         target: Test
     - name: Publish Unit Test Results
@@ -45,7 +45,7 @@ jobs:
       with:
         files: "**/TestResults/*.xml"
     - name: Build NuGet Package
-      uses: cake-build/cake-action@v3
+      uses: cake-build/cake-action@v4
       with:
         target: Pack
         arguments: |
